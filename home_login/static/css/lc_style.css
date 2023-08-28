@@ -1,0 +1,120 @@
+.hide
+{
+    display:none
+}
+
+/* Placeholder Color Change */
+
+::placeholder { 
+    color: rgb(196, 194, 194) !important;
+  }
+
+
+/* Datatable Header Size Fix */
+
+.dataTables_scrollHeadInner{
+    width:100% !important;
+}
+.dataTables_scrollHeadInner table{
+    width:100% !important;
+}
+
+
+/* input number icon hide */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Doctor Checkup Page Patient List Card View */
+
+
+@media screen and (max-width: 767px) {
+    .sidebar_content {
+      width : 95% !important
+    }
+  }
+@media screen and (min-width: 768px) {
+    .sidebar_content {
+      width : 60% !important
+    }
+  }
+
+
+
+.select2-container--open
+{
+  z-index: 9999;
+}
+
+.pointer {cursor: pointer;}
+
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+}
+
+/* Track */
+
+
+html::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 0px;
+}
+
+
+/* Handle */
+
+html::-webkit-scrollbar-thumb {
+  background: #5f6990;
+  border-radius: 0px;
+}
+
+
+/* Handle on hover */
+html::-webkit-scrollbar-thumb:hover {
+  background: #b6bddc;
+}
+
+
+.modal-body{
+  padding:15px !important
+}
+
+
+
+/* INDEX.HTML */
+
+.banner_section{
+  display: flex;
+  justify-content: center;
+}
+
+.banner_img_section{
+  height:300px;
+  width:100%
+}
+
+.lc_img{
+  height:100%;
+  width:100%;
+  object-fit: cover;
+}
+
+.slider_img_section{
+  height:600px;
+  width:100%
+}
+
+.input-label{
+  font-size: 20px !important;
+}
+
+
+.lc_product_p{
+  font-size: 35px;
+}

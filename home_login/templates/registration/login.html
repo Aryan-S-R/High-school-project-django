@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Login</title>
+  <style>
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      justify-content: center;
+      text-align: center;
+    }
+
+    button {
+      justify-content: center;
+      text-align: center;
+      background-color: aqua;
+      color: black;
+    }
+
+    .body {
+      background-color: antiquewhite;
+    }
+  </style>
+</head><br><br><br><br><br><br><br><br><br>
+
+<body class="body">
+  <h2>Log In</h2><br>
+  {% extends 'base.html' %}
+  {% block title %}Login{% endblock %}
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-4">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+
+</html>

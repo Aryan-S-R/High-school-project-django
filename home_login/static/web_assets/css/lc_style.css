@@ -1,0 +1,52 @@
+.lc_position{
+    width:100%;
+    height:375px;
+}
+
+.lc_img{
+    height:100% !important;
+    width:100% !important;
+    object-fit: cover;
+}
+
+.lc_carousel_item{
+    height:675px;
+    width:100%
+}
+
+@media screen and (max-width: 425px) {
+    .lc_carousel_item{
+        height:220px !important
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 426px){
+    .lc_carousel_item{
+        height:600px !important
+    }
+}
+
+@media only screen and (min-width: 769px){
+    .lc_img_padding{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+.viewDetailsBtn{
+    margin-top: 20px;
+    background: #855d42;
+    border: 1px solid #bba47d;
+    padding: 12px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+.viewDetailsBtn:hover{
+    background: #9c6f51;
+}
+
+

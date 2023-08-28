@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<link rel="shortcut icon" href="{% static 'img/fav-icon.png' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/summernote/summernote.min.css' %}">
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+
+
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/daterangepicker.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/datatables/datatables.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables/buttons.dataTables.min.css' %}">
+
+<!-- Select2 -->
+
+<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+
+<!-- toastr -->
+
+<link rel="stylesheet" href="{% static 'plugins/toastr/toastr.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/izitoast/iziToast.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/iziModal/iziModal.min.css' %}">
+
+<!-- moment -->
+
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+
+
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/lc_style.css' %}">
+<style>
+  #overlayer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99999;
+    background: #ffffff;
+  }
+
+  .loader {
+    display: inline-block;
+    position: absolute;
+    z-index: 999999;
+    top: 40%;
+    left: 45%;
+  }
+
+  .loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .loader-inner img {
+    width: 150px;
+  }
+
+  .timenav {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    color: #720808;
+    font-weight: 800;
+  }
+
+  .text-bold {
+    font-weight: 800;
+  }
+
+  .top-left {
+    justify-content: right;
+    text-align: right;
+  }
+</style>
+</head>
+
+<main>
+  {% block content %}
+
+  <body class="nk-body bg-lighter npc-default has-sidebar no-touch nk-nio-theme mini-sidebar">
+
+    <div id="overlayer"></div>
+    <span class="loader">
+      <span class="loader-inner">
+        <img src="{% static 'img/preloader.gif' %}" alt="Logo">
+      </span>
+    </span>
+
+    <div class="main-wrapper">
+
+      <div class="header header-one">
+
+        <div class="header-left header-left-one">
+          <a href="{% url 'home' %}" class="logo">
+            <img src="/static/img/logo.png" alt="Logo">
+          </a>
+          <a href="{% url 'home' %}" class="white-logo">
+            <img src="{% static 'img/logo-white.png' %}" alt="Logo">
+          </a>
+          <a href="{% url 'home' %}" class="logo logo-small">
+            <img src="{% static 'img/logo-small.png' %}" alt="Logo" width="30" height="30">
+          </a>
+        </div>
+
+
+        <a href="javascript:void(0);" id="toggle_btn">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <div class="top-nav-search hide">
+          <form>
+            <input type="text" class="form-control" placeholder="Search here">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+
+
+        <a class="mobile_btn" id="mobile_btn">
+          <i class="fas fa-bars"></i>
+        </a>
+
+
+        <ul class="nav nav-tabs user-menu">
+          <li class="nav-item dropdown has-arrow main-drop timenav">
+            <section>
+              <p id="time">--:--:--</p>
+            </section>
+          </li>
+          <li class="nav-item dropdown has-arrow main-drop">
+            <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+              <span class="user-img">
+                <img src="{% static 'img/avatar-02.jpg' %}" alt="">
+                <span class="status online"></span>
+              </span>
+              <span class="text-bold">{{ user.first_name }} {{ user.last_name }}</span>
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'logout' %}">
+                <i data-feather="log-out" class="me-1"></i> Sign out
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-inner slimscroll">
+          <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+              {% if user.is_authenticated %}
+              <li class="menu-title"><span>Master</span></li>
+
+              <li class="{% block home_nav %} {% endblock %}">
+                <a href="{% url 'home' %}"><i class="fa fa-home"></i> <span>Home</span></a>
+              </li>
+
+              <li class="{% block slider_nav %} {% endblock %}">
+                <a href="{% url 'slider' %}"><i class="fa fa-window-restore"></i> <span>Students Info</span></a>
+              </li>
+
+              <li class="{% block artist_nav %} {% endblock %}">
+                <a href="{% url 'artist' %}"><i class="fa fa-users"></i> <span>Teacher's Info</span></a>
+              </li>
+
+              <li class="{% block product_nav %} {% endblock %}">
+                <a href="{% url 'product' %}"><i class="fa fa-paint-brush"></i> <span>Financial Info</span></a>
+              </li>
+
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="page-wrapper">
+        {% block main_content %} {% endblock %}
+      </div>
+
+      <div class="footer footer-one">
+
+
+        <div class="row" style="padding: 5px 15px;">
+          <div class="col-md-6 col-12">
+            <img src="{% static 'img/logo.png' %}" style="height: 40px;">
+          </div>
+          <div class="col-md-6 col-12 text-end text-bold">
+            <img src="{% static 'img/brandlogo.png' %}" style="width: 50px;">
+            Lintcloud IT Services
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    {% block extra_css %}
+
+
+
+    {% endblock %}
+
+
+
+
+    <script src="{% static 'js/lib/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'plugins/popper.js/dist/umd/popper.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/lib/daterangepicker.min.js' %}"></script>
+
+    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'js/lib/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'js/lib/feather.min.js' %}"></script>
+
+    <script src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+
+    <script src="{% static 'plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
+    <script src="{% static 'plugins/izitoast/iziToast.min.js' %}"></script>
+
+
+    <script src="{% static 'plugins/iziModal/iziModal.min.js' %}"></script>
+
+    <script src="{% static 'plugins/sweetalert2/sweetalert2.all.min.js' %}"></script>
+
+    <!-- Typeahead -->
+
+    <script src="{% static '/plugins/typeahead/typeahead.bundle.min.js' %}"></script>
+
+
+
+    <!-- Datatable -->
+
+    <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/jszip.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.print.min.js' %}"></script>
+    <script src="{% static 'js/lib/sum().js' %}"></script>
+    <script src="{% static 'plugins/summernote/summernote.min.js' %}"></script>
+    <script src="{% static 'plugins/ckeditor/ckeditor.js' %}"></script>
+
+    <script src="{% static 'js/lib/jquery.cookie.js' %}"></script>
+
+
+    <!-- Select2 -->
+
+    <script src="{% static 'plugins/select2/js/select2.min.js' %}"></script>
+
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Canvas -->
+
+    <script src="{% static 'plugins/canvas/jspdf.min.js' %}"></script>
+    <script src="{% static 'plugins/canvas/html2canvas.js' %}"></script>
+    <script src="{% static 'plugins/canvas/printThis.min.js' %}"></script>
+    <script src="{% static 'plugins/canvas/printThis.js' %}"></script>
+    <script>
+      const time = document.getElementById("time")
+
+      function getCurrentTime() {
+        const currentDate = new Date(),
+          hours = currentDate.getHours(),
+          minutes = formatTime(currentDate.getMinutes()),
+          seconds = formatTime(currentDate.getSeconds()),
+          formatHours = formatTime(((hours + 11) % 12 + 1)),
+          format = (hours < 12) || (hours == 24) ? 'AM' : 'PM'
+        time.innerHTML = `${formatHours}:${minutes}:${seconds} <small>${format}</small>`
+      }
+
+      function formatTime(value) {
+        return value < 10 ? `0${value}` : value
+      }
+
+      setInterval(getCurrentTime, 1000);
+    </script>
+
+    {% block extra_js %}
+
+    {% endblock %}
+
+
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'success'%}
+    <script type="text/javascript">toastr.{ { message.tags } } ('{{ message }}')</script>
+    {% elif message.tags == 'info' %}
+    <script type="text/javascript">toastr.{ { message.tags } } ('{{ message }}')</script>
+    {% elif message.tags == 'warning' %}
+    <script type="text/javascript">toastr.{ { message.tags } } ('{{ message }}')</script>
+    {% elif message.tags == 'error' %}
+    <script type="text/javascript">toastr.{ { message.tags } } ('{{ message }}')</script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% endblock %}
+  </body>
+</main>
+
+</html>
